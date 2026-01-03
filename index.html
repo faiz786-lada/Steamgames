@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html class="js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="https://steamtools.games/">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/871/871366.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Steam Tools Games – Download Game Files, Mods & Tools</title>
+    
+    <meta name="description" content="Steam Tools Games - Your ultimate marketplace for game files, mods, tools, and gaming utilities. Download verified game content, mods, and tools for PC gaming.">
+    
+    <meta property="og:site_name" content="Steam Tools Games">
+    <meta property="og:url" content="https://steamtools.games/">
+    <meta property="og:title" content="Steam Tools Games – Download Game Files, Mods & Tools">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Steam Tools Games - Your ultimate marketplace for game files, mods, tools, and gaming utilities.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Steam Tools Games – Download Game Files, Mods & Tools">
+    <meta name="twitter:description" content="Steam Tools Games - Your ultimate marketplace for game files, mods, tools, and gaming utilities.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <style>
+        :root {
+            --color-primary: #1a1f2e;
+            --color-secondary: #0f141f;
+            --color-accent: #00a8ff;
+            --color-accent-dark: #0088cc;
+            --color-text: #e0e0e0;
+            --color-text-light: #a0a0a0;
+            --color-card-bg: #252a3a;
+            --color-card-border: #3a4055;
+            --gradient-primary: linear-gradient(135deg, #1a1f2e 0%, #0f141f 100%);
+            --gradient-accent: linear-gradient(90deg, #00a8ff 0%, #0097e6 100%);
+            --gradient-glow: linear-gradient(90deg, rgba(0,168,255,0.1) 0%, rgba(0,168,255,0.05) 100%);
+            --shadow-glow: 0 0 20px rgba(0, 168, 255, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-primary);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .site-header {
+            background: var(--color-secondary);
+            border-bottom: 1px solid rgba(0, 168, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 20px;
+        }
+        
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            background: linear-gradient(90deg, #fff 0%, #00a8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--color-accent);
+        }
+        
+        .nav-link.active {
+            color: var(--color-accent);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-accent);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .search-btn, .cart-btn, .user-btn {
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .search-btn:hover, .cart-btn:hover, .user-btn:hover {
+            color: var(--color-accent);
+        }
+        
+        .user-btn {
+            background: var(--color-card-bg);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: var(--gradient-primary);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-title span {
+            background: linear-gradient(90deg, #00a8ff 0%, #0097e6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 168, 255, 0.1);
+        }
+        
+        /* Categories Section */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            color: var(--color-text-light);
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .categories-section {
+            padding: 80px 0;
+            background: var(--color-secondary);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .category-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-card-border);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-accent);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-glow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: var(--color-accent);
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .category-desc {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+        
+        .category-stats {
+            display: flex;
+            gap: 20px;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Featured Products */
+        .products-section {
+            padding: 80px 0;
+            background: var(--color-primary);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .product-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .product-image {
+            height: 180px;
+            width: 100%;
+            background: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            font-size: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .product-desc {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+        
+        .product-price s {
+            color: var(--color-text-light);
+            font-size: 1rem;
+            margin-left: 5px;
+        }
+        
+        .btn-add-to-cart {
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-add-to-cart:hover {
+            background: var(--color-accent-dark);
+        }
+        
+        /* Features */
+        .features-section {
+            padding: 80px 0;
+            background: var(--color-secondary);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-glow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: var(--color-accent);
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .feature-desc {
+            color: var(--color-text-light);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background: var(--color-secondary);
+            border-top: 1px solid rgba(0, 168, 255, 0.2);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+        
+        .footer-logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            background: linear-gradient(90deg, #fff 0%, #00a8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .footer-about {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-accent);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .categories-grid,
+            .products-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">ST</div>
+                <div class="logo-text">STEAM TOOLS GAMES</div>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#" class="nav-link">Games</a>
+                <a href="#" class="nav-link">Mods</a>
+                <a href="#" class="nav-link">Tools</a>
+                <a href="#" class="nav-link">Assets</a>
+                <a href="#" class="nav-link">Support</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="search-btn">
+                    <i data-feather="search"></i>
+                </button>
+                <button class="cart-btn">
+                    <i data-feather="shopping-cart"></i>
+                </button>
+                <button class="user-btn">
+                    <i data-feather="user"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section fade-in">
+        <div class="container hero-content">
+            <h1 class="hero-title">Download <span>Game Files</span>, Mods & Tools</h1>
+            <p class="hero-subtitle">Steam Tools Games is your ultimate marketplace for verified game content, mods, utilities, and tools. Enhance your gaming experience with our curated collection.</p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Browse All Games</a>
+                <a href="#" class="btn btn-secondary">View Top Mods</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section fade-in">
+        <div class="container">
+            <h2 class="section-title">Browse Categories</h2>
+            <p class="section-subtitle">Find exactly what you need from our carefully organized categories</p>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i data-feather="package"></i>
+                    </div>
+                    <h3 class="category-title">Game Files</h3>
+                    <p class="category-desc">Complete game files, patches, and DLC content for popular titles</p>
+                    <div class="category-stats">
+                        <span>1,250+ Files</span>
+                        <span>Updated Daily</span>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i data-feather="tool"></i>
+                    </div>
+                    <h3 class="category-title">Game Tools</h3>
+                    <p class="category-desc">Utilities, trainers, editors, and optimization tools for gaming</p>
+                    <div class="category-stats">
+                        <span>500+ Tools</span>
+                        <span>Verified Safe</span>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i data-feather="layers"></i>
+                    </div>
+                    <h3 class="category-title">Mods & Addons</h3>
+                    <p class="category-desc">Enhance your games with community-created mods and addons</p>
+                    <div class="category-stats">
+                        <span>3,000+ Mods</span>
+                        <span>User Rated</span>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i data-feather="image"></i>
+                    </div>
+                    <h3 class="category-title">Game Assets</h3>
+                    <p class="category-desc">Textures, models, sounds, and other assets for game development</p>
+                    <div class="category-stats">
+                        <span>10,000+ Assets</span>
+                        <span>Royalty Free</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products-section fade-in">
+        <div class="container">
+            <h2 class="section-title">Featured Game Files</h2>
+            <p class="section-subtitle">Top downloaded and highly rated game files this week</p>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <i data-feather="box"></i>
+                        <div class="product-badge">BEST SELLER</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cyberpunk 2077 Complete Edition</h3>
+                        <p class="product-desc">All DLCs included, optimized performance, ready to install</p>
+                        <div class="product-footer">
+                            <div class="product-price">$24.99 <s>$49.99</s></div>
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <i data-feather="cpu"></i>
+                        <div class="product-badge">NEW</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Game Optimizer Pro Tool</h3>
+                        <p class="product-desc">Boost FPS, reduce lag, optimize graphics for any game</p>
+                        <div class="product-footer">
+                            <div class="product-price">$14.99</div>
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <i data-feather="wind"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Skyrim Ultra HD Mod Pack</h3>
+                        <p class="product-desc">Complete visual overhaul with 4K textures and effects</p>
+                        <div class="product-footer">
+                            <div class="product-price">$9.99</div>
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <i data-feather="map"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">GTA V Enhanced Edition</h3>
+                        <p class="product-desc">Game with all updates, mod support, performance fixes</p>
+                        <div class="product-footer">
+                            <div class="product-price">$19.99 <s>$39.99</s></div>
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section fade-in">
+        <div class="container">
+            <h2 class="section-title">Why Choose Steam Tools Games</h2>
+            <p class="section-subtitle">We provide the best platform for gamers and developers</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-feather="shield"></i>
+                    </div>
+                    <h3 class="feature-title">Verified & Safe</h3>
+                    <p class="feature-desc">All files are scanned for malware and verified for safety</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-feather="download"></i>
+                    </div>
+                    <h3 class="feature-title">Fast Downloads</h3>
+                    <p class="feature-desc">High-speed servers with no bandwidth limits</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-feather="clock"></i>
+                    </div>
+                    <h3 class="feature-title">Regular Updates</h3>
+                    <p class="feature-desc">Files are updated regularly with the latest patches</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-feather="headphones"></i>
+                    </div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="feature-desc">Get help anytime with our dedicated support team</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">
+                        <div class="footer-logo-text">STEAM TOOLS GAMES</div>
+                    </a>
+                    <p class="footer-about">Your ultimate marketplace for game files, mods, tools, and gaming utilities. Trusted by millions of gamers worldwide.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-heading">Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Game Files</a></li>
+                        <li><a href="#">Mods & Addons</a></li>
+                        <li><a href="#">Game Tools</a></li>
+                        <li><a href="#">Assets</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-heading">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-heading">Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Forums</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Developers</a></li>
+                        <li><a href="#">Contributors</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Steam Tools Games. All rights reserved. All trademarks are property of their respective owners.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        // Initialize Feather icons
+        feather.replace();
+        
+        // Simple scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+            
+            // Add to cart functionality
+            const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
+                    const productPrice = this.closest('.product-card').querySelector('.product-price').textContent;
+                    
+                    // Show added to cart message
+                    alert(`Added "${productTitle}" to cart for ${productPrice}`);
+                    
+                    // You would typically send this to a shopping cart system here
+                });
+            });
+        });
+    </script>
+</body>
+</html>
